@@ -1,3 +1,4 @@
 <ion-content>
-  <h1 class="ion-text-center">This is the Home Page</h1>
+  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (loadListChange)="pageLoadList($event)">
+  </app-todo-list>
 </ion-content>

@@ -1,4 +1,4 @@
-import { TodoModel } from './../../core/model/todo.model';
+import { ToDoListViewModel } from './components/todo-list/todo.list.view.model';
 export class HomePageViewModel {
-    toDos: TodoModel[];
+    toDoListViewModel: ToDoListViewModel;
 }

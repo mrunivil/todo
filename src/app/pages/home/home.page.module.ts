@@ -1,15 +1,19 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgModule } from "@angular/core";
-import { AppStateModule } from "../../state/app/app.state.module";
+import { IonicModule } from '@ionic/angular';
 import { NgxsModule } from '@ngxs/store';
 import { HomePageState } from 'src/app/state/home/home.state';
+import { AppStateModule } from '../../state/app/app.state.module';
+import { HomeStateModule } from '../../state/home/home.state.module';
+import { TodoListComponent } from './components/todo-list/todo.list.component';
 import { HomePage } from './home.page';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicModule } from '@ionic/angular';
 
 @NgModule({
-  declarations: [HomePage],
+  declarations: [
+    HomePage,
+    TodoListComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -20,7 +24,8 @@ import { IonicModule } from '@ionic/angular';
         component: HomePage
       }
     ]),
-    NgxsModule.forFeature([HomePageState])
+    HomeStateModule
+    // NgxsModule.forFeature([HomePageState])
   ]
 })
 export class HomePageModule { }
