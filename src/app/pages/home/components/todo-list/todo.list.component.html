@@ -1,3 +1,5 @@
-<p *ngFor="let todo of viewModel.toDos">TEST</p>
-
+<ion-list *ngFor="let toDoListItemViewModel of viewModel.toDoListItemViewModels">
+  <app-todo-list-item [viewModel]="toDoListItemViewModel" (onToDoDeleted)="deleteToDo($event)">
+  </app-todo-list-item>
+</ion-list>
 <ion-button (click)="loadList()">Load ToDos</ion-button>
