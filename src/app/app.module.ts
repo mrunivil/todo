@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -17,13 +17,15 @@ import { AppStateModule } from './state/app/app.state.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     NgxsModule.forRoot(),
-    AppStateModule
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    AppStateModule,
   ],
   providers: [
     {
       provide: RouteReuseStrategy,
-      useClass: IonicRouteStrategy
-    }],
+      useClass: IonicRouteStrategy,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
