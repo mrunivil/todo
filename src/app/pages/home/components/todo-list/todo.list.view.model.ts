@@ -1,5 +1,5 @@
-import { TodoModel } from '../../../../core/model/todo.model';
+import { ToDoListItemViewModel } from './todo-list-item/todo.list.item.view.model';
 
 export class ToDoListViewModel {
-    toDos: TodoModel[];
+  toDoListItemViewModels: ToDoListItemViewModel[];
 }

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
-
+import { PreloadAllModules, RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -9,20 +7,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
       [
         {
           path: 'home',
-          loadChildren: () => import('./pages/home/home.page.module').then(m => m.HomePageModule)
+          loadChildren: () =>
+            import('./pages/home/home.page.module').then(
+              (m) => m.HomePageModule
+            ),
         },
         {
           path: '',
           redirectTo: 'home',
-          pathMatch: 'full'
+          pathMatch: 'full',
         },
         {
           path: '**',
           redirectTo: 'home',
-        }
+        },
       ],
-      { preloadingStrategy: PreloadAllModules })
+      { preloadingStrategy: PreloadAllModules }
+    ),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

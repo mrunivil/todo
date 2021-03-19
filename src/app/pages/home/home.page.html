@@ -1,4 +1,5 @@
 <ion-content>
-  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (loadListChange)="pageLoadList($event)">
+  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (loadListChange)="pageLoadList()"
+    (onToDoDeleted)="deleteToDo($event)">
   </app-todo-list>
 </ion-content>
