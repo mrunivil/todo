@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxsModule } from '@ngxs/store';
 import { AppStateModule } from './state/app/app.state.module';
-
+import { AppState } from './state/app/app.state';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -16,7 +17,9 @@ import { AppStateModule } from './state/app/app.state.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([AppState], {
+      developmentMode: !environment.production,
+    }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     AppStateModule,
   ],

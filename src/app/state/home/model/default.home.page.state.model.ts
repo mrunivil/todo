@@ -1,4 +1,4 @@
-import { HomePageStateModel } from './home.state.model';
+import { HomePageStateModel } from './home.page.state.model';
 export const DefaultHomePageStateModel: HomePageStateModel = {
   homePageViewModel: {
     toDoListViewModel: {

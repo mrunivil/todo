@@ -9,12 +9,8 @@ import { ToDoListViewModel } from './todo.list.view.model';
 })
 export class TodoListComponent {
   @Input() viewModel: ToDoListViewModel;
-  @Output() loadListChange = new EventEmitter<void>();
   @Output() onToDoDeleted = new EventEmitter<TodoModel>();
 
-  loadList() {
-    this.loadListChange.emit();
-  }
   deleteToDo(toDo: TodoModel) {
     this.onToDoDeleted.emit(toDo);
   }

@@ -1,0 +1,6 @@
+<ion-item>
+  <ion-label>Todo:</ion-label>
+  <ion-input [(ngModel)]="todoTitle" placeholder="Enter title of Todo"></ion-input>
+  <ion-button (click)="editTodo()">Add</ion-button>
+</ion-item>
+<ion-button (click)="saveTodos()">Save</ion-button>
