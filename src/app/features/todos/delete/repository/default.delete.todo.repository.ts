@@ -12,7 +12,11 @@ export class DefaultDeleteTodoRepository extends AbstractDeleteTodoRepository {
   }
   async deleteTodo(param: TodoModel): Promise<void | AbstractError> {
     try {
-      return await this.dataSource.deleteTodo(param);
+      if (!!param) {
+        return await this.dataSource.deleteTodo(param);
+      } else {
+        return new GenericError();
+      }
     } catch (error) {
       return new GenericError();
     }
