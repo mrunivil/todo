@@ -25,7 +25,10 @@ export class EditTodoComponent implements OnChanges {
   }
 
   editTodo() {
-    this.onTodoEdited.emit({ title: this.todoTitle });
+    this.onTodoEdited.emit({
+      title: this.todoTitle,
+      id: this.viewModel.todo.id,
+    });
   }
 
   saveTodos() {

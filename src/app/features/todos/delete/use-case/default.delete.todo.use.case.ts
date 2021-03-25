@@ -9,7 +9,7 @@ export class DefaultDeleteTodoUseCase extends AbstractDeleteTodoUseCase {
   constructor(private repository: AbstractDeleteTodoRepository) {
     super();
   }
-  execute(param: TodoModel): Promise<void | AbstractError> {
+  execute(param: TodoModel): Promise<TodoModel | AbstractError> {
     return this.repository.deleteTodo(param);
   }
 }
