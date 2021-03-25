@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { DefaultHomePageStateModel } from './model/default.home.page.state.model';
-import { HomePageStateModel } from './model/home.state.model';
+import { HomePageStateModel } from './model/home.page.state.model';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AbstractGetTodosUseCase } from '../../features/todos/get/use-case/abstract.get.todos.use.case';
 import { AbstractDeleteTodoUseCase } from 'src/app/features/todos/delete/use-case/abstract.delete.todo.use.case';
-import { ToDoListItemViewModel } from 'src/app/pages/home/components/todo-list/todo-list-item/todo.list.item.view.model';
+import { ToDoListItemViewModel } from 'src/app/pages/components/todo-list/todo-list-item/todo.list.item.view.model';
 import { AbstractError } from 'src/app/core/error/abstract.error';
 import { TodoModel } from 'src/app/core/model';
-
+import { patch, removeItem } from '@ngxs/store/operators';
 export class HomePageGetToDosAction {
   static readonly type = '[HomePage] GetTodosAction';
 }
@@ -17,7 +17,7 @@ export class HomePageDeleteToDoAction {
 }
 
 @State<HomePageStateModel>({
-  name: 'Home',
+  name: 'HomePageState',
   defaults: DefaultHomePageStateModel,
 })
 @Injectable()
@@ -51,22 +51,22 @@ export class HomePageState {
   }
   @Action(HomePageDeleteToDoAction)
   async deleteToDo(
-    { patchState, getState }: StateContext<HomePageStateModel>,
+    { setState }: StateContext<HomePageStateModel>,
     { toDo }: HomePageDeleteToDoAction
   ) {
     const result = await this.deleteToDoUseCase.execute(toDo);
     if (!(result instanceof AbstractError)) {
-      const toDoListItemViewModels = getState().homePageViewModel
-        .toDoListViewModel.toDoListItemViewModels;
-      patchState({
-        homePageViewModel: {
-          toDoListViewModel: {
-            toDoListItemViewModels: toDoListItemViewModels.filter(
-              (e) => e.toDo !== toDo
-            ),
-          },
-        },
-      });
+      setState(
+        patch({
+          homePageViewModel: patch({
+            toDoListViewModel: patch({
+              toDoListItemViewModels: removeItem<ToDoListItemViewModel>(
+                (item) => item.toDo === toDo
+              ),
+            }),
+          }),
+        })
+      );
     }
   }
 }

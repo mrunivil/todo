@@ -6,7 +6,7 @@ import {
   HomePageGetToDosAction,
   HomePageDeleteToDoAction,
   HomePageState,
-} from '../../state/home/home.state';
+} from '../../state/home/home.page.state';
 import { HomePageViewModel } from './home.page.view.model';
 
 @Component({

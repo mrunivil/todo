@@ -1,5 +1,8 @@
 <ion-content>
-  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (loadListChange)="pageLoadList()"
-    (onToDoDeleted)="deleteToDo($event)">
+  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (onToDoDeleted)="deleteToDo($event)">
   </app-todo-list>
+  <ion-button (click)="pageLoadList()">Load ToDos</ion-button>
+  <a routerLink="../createTodos" routerDirection="forward">
+    <ion-button>Create</ion-button>
+  </a>
 </ion-content>

@@ -1,0 +1,12 @@
+<ion-toolbar>
+  <ion-title>Create new Todos</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <app-todo-list [viewModel]="($viewModel | async).toDoListViewModel" (onToDoDeleted)="removeTodoFromList($event)">
+  </app-todo-list>
+  <edit-todo [viewModel]="($viewModel | async).editTodoViewModel" (onTodoEdited)="addTodoToList($event)"
+    (onToDosSaved)="saveTodos()"></edit-todo>
+</ion-content>

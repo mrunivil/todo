@@ -13,6 +13,13 @@ import { PreloadAllModules, RouterModule } from '@angular/router';
             ),
         },
         {
+          path: 'createTodos',
+          loadChildren: () =>
+            import('./pages/create-todos/create.todos.page.module').then(
+              (m) => m.CreateTodosPageModule
+            ),
+        },
+        {
           path: '',
           redirectTo: 'home',
           pathMatch: 'full',
