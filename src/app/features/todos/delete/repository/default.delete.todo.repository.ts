@@ -10,7 +10,7 @@ export class DefaultDeleteTodoRepository extends AbstractDeleteTodoRepository {
   constructor(private dataSource: AbstractDeleteTodoDataSource) {
     super();
   }
-  async deleteTodo(param: TodoModel): Promise<void | AbstractError> {
+  async deleteTodo(param: TodoModel): Promise<TodoModel | AbstractError> {
     try {
       if (!!param) {
         return await this.dataSource.deleteTodo(param);
