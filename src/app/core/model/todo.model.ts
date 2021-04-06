@@ -1,6 +1,6 @@
 import { AbstractModel } from './abstract.model';
 
 export class TodoModel extends AbstractModel {
-  id: number;
+  id?: number;
   title: string;
 }

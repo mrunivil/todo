@@ -10,9 +10,12 @@ export class DefaultDeleteTodoDataSource extends AbstractDeleteTodoDataSource {
     super();
   }
   async deleteTodo(param: TodoModel): Promise<TodoModel> {
-    const url = `${environment.backendUrl}/${param}`;
-    return this.http
-      .delete<TodoModel>(url, environment.httpOptions)
+    await this.http
+      .delete<TodoModel>(
+        `${environment.backendUrl}/${param.id}`,
+        environment.httpOptions
+      )
       .toPromise();
+    return param;
   }
 }

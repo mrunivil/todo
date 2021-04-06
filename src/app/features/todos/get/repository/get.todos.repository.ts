@@ -7,13 +7,18 @@ import { AbstractGetTodosRepository } from './abstract.get.todos.repository';
 
 @Injectable()
 export class GetTodosRepository extends AbstractGetTodosRepository {
-    constructor(private dataSource: AbstractGetTodosDataSource) { super(); }
-    async getTodos(): Promise<TodoModel[] | AbstractError> {
-        try {
-            const result = await this.dataSource.getTodos();
-            return result;
-        } catch (e) {
-            return new GenericError();
-        }
+  constructor(private dataSource: AbstractGetTodosDataSource) {
+    super();
+  }
+  async getTodos(): Promise<TodoModel[] | AbstractError> {
+    try {
+      const result = await this.dataSource.getTodos();
+      if (!(result instanceof Array)) {
+        return new GenericError();
+      }
+      return result;
+    } catch (e) {
+      return new GenericError();
     }
+  }
 }
