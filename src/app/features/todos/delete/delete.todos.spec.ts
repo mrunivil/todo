@@ -16,7 +16,7 @@ describe('feature', () => {
       fixture: TodoModel;
 
     beforeEach(() => {
-      fixture = { title: 'todo' };
+      fixture = { title: 'todo', id: '1' };
       todoService = new MockTodosService();
       todoService.add(fixture);
       dataSource = new DefaultDeleteTodoDataSource(todoService);
